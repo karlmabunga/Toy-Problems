@@ -31,21 +31,17 @@ var rockPaperScissors = function (rounds) {
   var combinations = '';
   // iterate through the options
   for (var i = 0; i < options.length; i++) {
-  // while string is not more than length of rounds
-    while (combinations.length < rounds) {
-    // empty string is added each element
-    combinations += options[i];
-    }
-    // string is pushed into result array
-    if (result.indexOf(combinations) === -1) {
-    result.push(combinations);
-    }
+     for (var j = 0; j < options.length; j++) {
+        for (var k = 0; k < options.length; k++) {
+            var sequence = options[i] + options[j] + options[k];
+            result.push(sequence);
+        }
+     }
   }
 
   // return result
   return result;
 };
-
 
 
 // rockPaperScissors(3);
