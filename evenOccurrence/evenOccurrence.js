@@ -28,9 +28,9 @@ var evenOccurrence = function(arr) {
     }
   }
   // iterate through the storage
-  for (var key in storage) {
-    // if storage value is even
-    if (storage[key] % 2 === 0) {
+  for (var key in storeLetters) {
+    // if storeLetters value is even
+    if (storeLetters[key] % 2 === 0) {
       // return key
       return key;
     }
