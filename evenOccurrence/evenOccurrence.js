@@ -10,6 +10,34 @@
  * console.log(onlyEven); //  4
 */
 
+// var evenOccurrence = function(arr) {
+//   // create obj to hold each item
+//   var storeLetters = {};
+//   // iterate through the array
+//   for (var i = 0; i < arr.length; i++){
+//     // create var for each item
+//     var currentItem = arr[i];
+//     // if obj at item is undefined
+//     if (storeLetters[currentItem] === undefined) {
+//       // assign the value to one
+//       storeLetters[currentItem] = 1;
+//       // otherwise
+//     } else {
+//       // increment the value
+//       storeLetters[currentItem]++;
+//     }
+//   }
+//   // iterate through the storage
+//   for (var key in storeLetters) {
+//     // if storeLetters value is even
+//     if (storeLetters[key] % 2 === 0) {
+//       // return key
+//       return key;
+//     }
+//   }
+//   // return null if no even occurences
+//   return null;
+// };
 var evenOccurrence = function(arr) {
   // create obj to hold each item
   var storeLetters = {};
@@ -23,16 +51,7 @@ var evenOccurrence = function(arr) {
       storeLetters[currentItem] = 1;
       // otherwise
     } else {
-      // increment the value
-      storeLetters[currentItem]++;
-    }
-  }
-  // iterate through the storage
-  for (var key in storeLetters) {
-    // if storeLetters value is even
-    if (storeLetters[key] % 2 === 0) {
-      // return key
-      return key;
+      return storeLetters[currentItem];
     }
   }
   // return null if no even occurences
