@@ -23,22 +23,30 @@
 // constraints - none
 // edge cases -none
 var rockPaperScissors = function (rounds) {
+  // edge case
+  if (rounds === 0) {
+     return [];
+  }
   // create result var array
   var result = [];
   // create list of options players can choose from
   var options = ['R', 'P', 'S'];
   // create empty string to add options to push into result
-  var combinations = '';
-  // iterate through the options
-  for (var i = 0; i < options.length; i++) {
-     for (var j = 0; j < options.length; j++) {
-        for (var k = 0; k < options.length; k++) {
-            var sequence = options[i] + options[j] + options[k];
-            result.push(sequence);
-        }
-     }
-  }
+  // utilize callstack to track recursion for us
+  function playRounds(plays) => {
+   // base case
+   if (plays.length === rounds) {
+      result.push(plays);
+      return;
+   }
 
+   // iterate through each play and recursively call function to make decision tree algorithm
+     options.forEach(play => {
+        playRounds(plays + play)
+     })
+  }
+  // start recursion
+  playRounds('');
   // return result
   return result;
 };

@@ -40,19 +40,13 @@
 // };
 var evenOccurrence = function(arr) {
   // create obj to hold each item
-  var storeLetters = {};
-  // iterate through the array
-  for (var i = 0; i < arr.length; i++){
-    // create var for each item
-    var currentItem = arr[i];
-    // if obj at item is undefined
-    if (storeLetters[currentItem] === undefined) {
-      // assign the value to one
-      storeLetters[currentItem] = 1;
-      // otherwise
-    } else {
-      return storeLetters[currentItem];
-    }
+  var counter = {}, 0;
+  for (i = 0; i < arr.length; i++) {
+    counter[arr[i]] = !counter[arr[i]];
+  }
+  for (i = 0; i < arr.length; i++) {
+    if (!counter[arr[i]])
+    return arr[i];
   }
   // return null if no even occurences
   return null;

@@ -33,6 +33,40 @@
 // Feel free to add helper functions if needed.
 
 
+// Don't use JavaScript's built-in sorting function (Array.prototype.sort)
+// input - array of numbers || can i assume the elements are all numbers?
+// output - array of numbers that go from smallest to largest
+// edge case - empty array
+// constraints - what is the time complexity of your algorithm? linear? but since there are two for loops i'm thinking quadratic
 var bubbleSort = function(array) {
-  // Your code here.
+  // edge case for empty array return []
+  if (array.length === 0) {
+    return [];
+  }
+  // iterate through the array
+  for (var i = 0; i < array.length; i++) {
+    // second loop through the array
+    for (var j = i+1; j < array.length; j++) {
+      // create var for smaller
+      var smaller = array[i];
+      // create var for larger
+      var larger = array[j];
+      // check if smaller is bigger than larger
+      if (array[i] > array[j]) {
+        // create temp var to hold small
+        var temp = array[i];
+        // assign larger val to small
+        array[i] = array[j];
+        // assign temp var to larger
+        array[j] = temp;
+      }
+    }
+  }
+  // return array
+  return array;
 };
+
+// bubbleSort([50, 23, 45, 43, 12, 35]) //[12, 23, 35, 43, 45, 50]
+// bubbleSort([2, 1, 3]); // yields [1, 2, 3]
+// bubbleSort([12, 13, 9]) // [9, 12, 13]
+
