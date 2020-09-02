@@ -40,7 +40,7 @@
 // };
 var evenOccurrence = function(arr) {
   // create obj to hold each item
-  var counter = {}, 0;
+  var counter = {};
   for (i = 0; i < arr.length; i++) {
     counter[arr[i]] = !counter[arr[i]];
   }
