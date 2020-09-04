@@ -95,8 +95,41 @@
  *
  */
 
+// input - array
+// output - array
+// edge case - none
+// constraints - none
+var mergeSort = function (array) {
+  // base case for recursion
+  if (array < 2) {
+    return array
+  }
+  // create var for middle of array
+  const middle = Math.floor(array.length / 2);
+  // create array for left side
+  const leftArray = array.slice(0, middle);
+  // create array for right side
+  const rightArray = array.slice(middle, array.length);
 
 
-var mergeSort = function(array) {
-  // Your code here.
+  // helper function to merge back together
+  const merge = (left, right) => {
+    // create result to return
+    let result = [];
+    // loop through while right are not falsy values
+    while (left.length && right.length) {
+      // if value in left is smaller than right
+      if (left[0] <= right[0]) {
+        // push the smaller to the return array
+        result.push(left.shift())
+        // otherwise push the bigger to the return array
+      } else {
+        result.push(right.shift())
+      }
+    }
+    return result;
+  }
+  return merge(mergeSort(leftArray), mergeSort(rightArray))
 };
+let test = [2, 3, 1, 5, 6, 0, 4, 8]
+mergeSort(test); // [0,1,2,3,4,5,6,8]
