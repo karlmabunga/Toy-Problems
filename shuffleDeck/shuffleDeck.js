@@ -31,22 +31,51 @@
  *   See https://www.dartmouth.edu/~chance/teaching_aids/books_articles/Mann.pdf .
  */
 
-var shuffleDeck = function(deck) {
-  // Your code here
-};
+  // input - array
+  // output - array
+  // edge case - none
+  // constraints - none
+  var shuffleDeck = function(deck, counter) {
+    //   create var for deck
+    deck = deck || orderedDeck();
+    // create counter to stop loop
+    counter = counter || 0
+    // if counter is more than 1000
+    if (counter > 1000 ) {
+      return deck;
+    }
 
-// Ordered deck generator provided for your testing convenience
-// (You may alter this function, but an unaltered copy will be used for tests.)
-var orderedDeck = function() {
-  var suits = [ '♥', '♣', '♠', '♦' ];
-  var values = [ 'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K' ];
-  var deck = [];
+    // create 1random integer between 0 and 51
+    var randomOne = Math.floor(Math.random() * 51)
+    // create 2random integer between 0 and 51
+    var randomTwo = Math.floor(Math.random() * 51)
 
-  suits.forEach(function(suit) {
-    values.forEach(function(value) {
-      deck.push(value + suit);
+    // temp = deck [1random integer]
+    var temp = deck[randomOne];
+    // deck[1random integer] = deck[2random integer]
+    deck[randomOne] = deck[randomTwo];
+    // deck[2random integer] = temp
+    deck[randomTwo] = temp;
+    // increment counter
+    counter++;
+    return shuffleDeck(deck, counter);
+
+  };
+
+  // Ordered deck generator provided for your testing convenience
+  // (You may alter this function, but an unaltered copy will be used for tests.)
+  var orderedDeck = function() {
+    var suits = [ '♥', '♣', '♠', '♦' ];
+    var values = [ 'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K' ];
+    var deck = [];
+
+    suits.forEach(function(suit) {
+      values.forEach(function(value) {
+        deck.push(value + suit);
+      });
     });
-  });
 
-  return deck;
-};
+    return deck;
+  };
+
+  // console.log(shuffleDeck())
