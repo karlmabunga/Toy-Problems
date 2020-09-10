@@ -17,18 +17,17 @@
   // edge cases - none
   // constraints - time complexity?
   var allAnagrams = function(string) {
-    // create result array
-    var result = [];
-    // create empty string to add all the letters to
-    var word = '';
-    // loop through the string
-    for (var i = 0; i < string.length; i++) {
-      // push word to result array
-      word += string[i];
-    }
-        result.push(word)
-    // return result array
-    return result;
+   var anagrams = {};
+   var generator = function(text, options) {
+     if (text.length === string.length) {
+       anagrams[text] = true;
+      }
+       for (var i = 0; i < options.length; i++) {
+         generator(text + options[i], options.slice(0, i) + options.slice(i+1))
+       }
+   }
+   generator('', string)
+   return Object.keys(anagrams)
   };
 
   var anagrams = allAnagrams('abc');

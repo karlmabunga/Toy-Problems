@@ -27,20 +27,34 @@
   *
   */
 
-var phoneDigitsToLetters = {
-  0: '0',
-  1: '1',
-  2: 'ABC',
-  3: 'DEF',
-  4: 'GHI',
-  5: 'JKL',
-  6: 'MNO',
-  7: 'PQRS',
-  8: 'TUV',
-  9: 'WXYZ'
-};
 
 
-var telephoneWords = function(digitString) {
-  // TODO: return every combination that can be spelled on a phone with these digits
+
+var telephoneWords = function (digitString) {
+  var phoneDigitsToLetters = {
+    0: '0',
+    1: '1',
+    2: 'ABC',
+    3: 'DEF',
+    4: 'GHI',
+    5: 'JKL',
+    6: 'MNO',
+    7: 'PQRS',
+    8: 'TUV',
+    9: 'WXYZ'
+  };
+  var combinations = {};
+  var generator = function (text, options) {
+    if (text.length === 4) {
+      combinations[text] = true;
+    }
+    for (var i = 0; i < options.length; i++) {
+      var check = options[i];
+      generator(text + phoneDigitsToLetters[check][i], phoneDigitsToLetters[check][i].slice(0, i) + phoneDigitsToLetters[check][i].slice(i + 1))
+    }
+  }
+  generator('', digitString);
+  return Object.keys(combinations);
 };
+
+telephoneWords('2745');
