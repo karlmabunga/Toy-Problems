@@ -30,31 +30,28 @@
 
 
 
+ var phoneDigitsToLetters = {
+   0: '0',
+   1: '1',
+   2: 'ABC',
+   3: 'DEF',
+   4: 'GHI',
+   5: 'JKL',
+   6: 'MNO',
+   7: 'PQRS',
+   8: 'TUV',
+   9: 'WXYZ'
+ };
 var telephoneWords = function (digitString) {
-  var phoneDigitsToLetters = {
-    0: '0',
-    1: '1',
-    2: 'ABC',
-    3: 'DEF',
-    4: 'GHI',
-    5: 'JKL',
-    6: 'MNO',
-    7: 'PQRS',
-    8: 'TUV',
-    9: 'WXYZ'
-  };
-  var combinations = {};
-  var generator = function (text, options) {
-    if (text.length === 4) {
-      combinations[text] = true;
+  var words = [];
+  var letterForDigits = function (word, digits) {
+    if (digits.length === 0) {
+      return words.push(word);
     }
-    for (var i = 0; i < options.length; i++) {
-      var check = options[i];
-      generator(text + phoneDigitsToLetters[check][i], phoneDigitsToLetters[check][i].slice(0, i) + phoneDigitsToLetters[check][i].slice(i + 1))
-    }
+    [...phoneDigitsToLetters[digits[0]]].forEach(letter => letterForDigits(word + letter, digits.slice(1)))
   }
-  generator('', digitString);
-  return Object.keys(combinations);
+  letterForDigits('', [...digitString]);
+  return words;
 };
 
 telephoneWords('2745');

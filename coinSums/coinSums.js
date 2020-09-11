@@ -25,7 +25,23 @@ makeChange(2) === 2
 */
 
 var makeChange = function(total) {
+  var change = [1, 2, 5, 10, 50];
+  var possibility = [];
+  var checkChange = function (number, options) {
+   if (number === total) {
+     return possibility[number] = true;
+   } else if (number > total) {
+       return;
+   }
+
+   for (var i = 0; i < change.length; i++) {
+     number += change[i];
+   }
+  }
+
+  checkChange(0, [...change])
+  return possibility.length;
 
 };
 
-
+// makeChange(1)
