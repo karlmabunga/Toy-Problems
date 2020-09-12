@@ -24,24 +24,42 @@ makeChange(1) === 1
 makeChange(2) === 2
 */
 
-var makeChange = function(total) {
-  var change = [1, 2, 5, 10, 50];
-  var possibility = [];
-  var checkChange = function (number, options) {
-   if (number === total) {
-     return possibility[number] = true;
-   } else if (number > total) {
-       return;
-   }
+// var makeChange = function(total) {
+//   var change = [1, 2, 5, 10, 50];
+//   var possibility = [];
+//   var checkChange = function (number, options) {
+//    if (number === total) {
+//      return possibility[number] = true;
+//    } else if (number > total) {
+//        return;
+//    }
 
-   for (var i = 0; i < change.length; i++) {
-     number += change[i];
-   }
-  }
+//    for (var i = 0; i < change.length; i++) {
+//      number += change[i];
+//    }
+//   }
 
-  checkChange(0, [...change])
-  return possibility.length;
+//   checkChange(0, [...change])
+//   return possibility.length;
 
-};
+// };
+var makeChange = function (total, coins) {
+  var counter = 0;
 
-// makeChange(1)
+  coins.sort();
+
+  (function recurse (index, remainder) {
+    var coin = coins[index];
+    if (index === 0) {
+      remainder % coin === 0 && counter++;
+      return;
+    }
+    while (remainder >= 0) {
+      recurse(index-1, remainder);
+      remainder -= coin;
+    }
+  })(coins.length-1, total)
+  return counter;
+}
+
+makeChange(5, [1,2])
