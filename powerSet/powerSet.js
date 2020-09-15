@@ -31,7 +31,7 @@ var powerSet = function(str) {
    for (var i = 0; i < options.length; i++) {
      recurse(sorted + options[i], options.slice(0, i) + options.slice(i+1))
    }
-   }
+ }
    recurse('', str)
    return Object.keys(combos)
-  };
+};

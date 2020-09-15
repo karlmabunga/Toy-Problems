@@ -46,7 +46,7 @@ makeChange(2) === 2
 var makeChange = function (total, coins) {
   var counter = 0;
 
-  coins.sort();
+  coins.sort(function(a,b) {return a - b;});
 
   (function recurse (index, remainder) {
     var coin = coins[index];
@@ -62,4 +62,4 @@ var makeChange = function (total, coins) {
   return counter;
 }
 
-makeChange(5, [1,2])
+// makeChange(5, [1,2])
