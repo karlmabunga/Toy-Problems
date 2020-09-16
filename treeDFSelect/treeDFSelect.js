@@ -35,21 +35,17 @@ var Tree = function(value) {
   this.children = [];
 };
 
-Tree.prototype.DFSelect = function(filter) {
+Tree.prototype.DFSelect = function(filter, depth = 0) {
   // create an array that will hold all of the true values from the filter
   var results = [];
-  // create recursive function to go through the tree
-//   var recurse = function() {
-    // iterate through the children and apply the filter onto the children
+  if (filter(this.value, depth)) {
+    results.push(this.value);
+  }
     for (var i = 0; i < this.children.length; i++) {
-      // if child passes the filter then add it to the array
-      if (filter(this.children[i])) {
-        results.push(children[i])
-      }
+
+      results = [...results, ...this.children[i].DFSelect(filter, depth + 1)]
     }
-//   }
-//   recurse();
-  // return the array
+
   return results;
 };
 
