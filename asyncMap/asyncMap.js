@@ -37,6 +37,27 @@
  *
  */
 
-
+// input - callback
+// output - function invocation
 var asyncMap = function(tasks, callback) {
+  // declare results array
+  var resultsArray = [];
+  // declare results count
+  var resultsCount = 0;
+
+  // iterate through the tasks
+  for(var i = 0; i < tasks.length; i++) {
+    // invoke taks with custom cb
+    (function(index) {
+      tasks[index](function (val) {
+        // store results in resultarrray
+        resultsArray[index] = val;
+        resultsCount++;
+        if(resultsCount === tasks.length) {
+          callback(resultsArray)
+        }
+      })
+    })(i);
+  }
+
 };
