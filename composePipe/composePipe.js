@@ -34,13 +34,13 @@
 'use strict';
 
 var compose = (...functions) => (value) => {
-  return functions.reduce((currentVal, currentFunc) => {
+  return functions.reduceRight((currentVal, currentFunc) => {
     return currentFunc(currentVal);
   }, value)
 }
 
 var pipe = (...functions) => (value) => {
-  return functions.reduceRight((currentVal, currentFunc) => {
+  return functions.reduce((currentVal, currentFunc) => {
     return currentFunc(currentVal);
   }, value)
 }

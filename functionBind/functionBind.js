@@ -23,9 +23,13 @@
  *
 */
 
-var bind = function(
-) {
-  // TODO: Your code here
+var bind = function(...items) {
+  console.log(items);
+  for (var i = 1; i < items.length; i++) {
+    if (items[i]) {
+      return = items[0](this.items[i])
+    }
+  };
 };
 
 /*
