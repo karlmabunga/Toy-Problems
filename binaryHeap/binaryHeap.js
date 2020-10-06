@@ -89,4 +89,5 @@ BinaryHeap.prototype.removeRoot = function () {
   for (var i = 1; i < this._heap.length; i++) {
     this._heap[i].splice(i - 1, 1, i);
   }
+  return this._heap.splice(0, 1)
 }
