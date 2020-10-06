@@ -86,7 +86,7 @@ BinaryHeap.prototype.insert = function (value) {
 BinaryHeap.prototype.removeRoot = function () {
   // TODO: Your code here
   // var copy = this._heap.slice(1);
-  for (var i = 1; i < this._heap.length: i++) {
+  for (var i = 1; i < this._heap.length; i++) {
     this._heap[i].splice(i - 1, 1, i);
   }
 }
