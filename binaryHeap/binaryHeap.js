@@ -10,7 +10,7 @@
  * parent of the 3rd and 4th nodes, and the 2nd node will be the parent of the 5th and
  * 6th nodes. In a specific kind of binary heap, the binary min heap, every node is
  * less than its immediate children:
- * 
+ *
  *          0
  *     1         2
  *   3   4     5   6
@@ -80,8 +80,13 @@ BinaryHeap.prototype.getRoot = function () {
 
 BinaryHeap.prototype.insert = function (value) {
   // TODO: Your code here
+  this._heap.push(value);
 }
 
 BinaryHeap.prototype.removeRoot = function () {
   // TODO: Your code here
+  // var copy = this._heap.slice(1);
+  for (var i = 1; i < this._heap.length: i++) {
+    this._heap[i].splice(i - 1, 1, i);
+  }
 }
