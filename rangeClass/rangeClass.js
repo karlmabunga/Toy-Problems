@@ -57,7 +57,7 @@ var Range = function(start, end, step = 1) {
     while (start >= end) {
       console.log('second loop')
       this.result[start] = start;
-      start += step;
+      start -= step;
     }
   }
 };
@@ -87,8 +87,10 @@ Range.prototype.includes = function (val) {
 // var myRange = new Range(0,10); // a new range representing the numbers between 0 and 10 (inclusively)
 // console.log(myRange)
 // debugger
-// var evenNumbers = new Range(2,8,2); // A range with the even numbers 2, 4, 6, and 8.
-// console.log(evenNumbers)
+var evenNumbers = new Range(2,8,2); // A range with the even numbers 2, 4, 6, and 8.
+console.log(evenNumbers)
+var backwards = new Range(10, -12, 2);
+console.log(backwards)
 // // evenNumbers.each(function(val){
 // //   console.log(val+"!");
 // // });
