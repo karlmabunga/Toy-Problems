@@ -70,7 +70,7 @@ Range.prototype.size = function () {
 
 Range.prototype.each = function (callback) {
   for (var key in this.result) {
-    callback(result[key])
+    callback(this.result[key])
   }
 };
 
@@ -87,13 +87,13 @@ Range.prototype.includes = function (val) {
 // var myRange = new Range(0,10); // a new range representing the numbers between 0 and 10 (inclusively)
 // console.log(myRange)
 // debugger
-var evenNumbers = new Range(2,8,2); // A range with the even numbers 2, 4, 6, and 8.
-console.log(evenNumbers)
-var backwards = new Range(10, -12, 2);
-console.log(backwards)
-// // evenNumbers.each(function(val){
-// //   console.log(val+"!");
-// // });
+// var evenNumbers = new Range(2,8,2); // A range with the even numbers 2, 4, 6, and 8.
+// console.log(evenNumbers)
+// var backwards = new Range(10, -12, 2);
+// console.log(backwards)
+// evenNumbers.each(function(val){
+//   console.log(val+"!");
+// });
 // // console.log("Who do we appreciate!?");
 // evenNumbers.size() //should be 4
 // console.log(evenNumbers.size())
