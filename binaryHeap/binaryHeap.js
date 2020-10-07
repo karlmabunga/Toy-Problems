@@ -80,14 +80,57 @@ BinaryHeap.prototype.getRoot = function () {
 
 BinaryHeap.prototype.insert = function (value) {
   // TODO: Your code here
+  // add the node to the colleciton
   this._heap.push(value);
+  var index = this._heap.length - 1;
+  var parentIndex = Math.floor((index - 1) / 2);
+  while (index > 0 && this.compare(this._heap[index], this._heap[parentIndex])) {
+    this.swap(index, parentIndex)
+    index = parentIndex;
+    parentIndex = Math.floor((index - 1) / 2)
+  }
+}
+
+BinaryHeap.prototype.swap =
+function (index, parentIndex) {
+  var temp = this._heap[index]
+  this._heap[index] = this._heap[parentIndex]
+  this._heap[parentIndex] = temp
 }
 
 BinaryHeap.prototype.removeRoot = function () {
   // TODO: Your code here
-  // var copy = this._heap.slice(1);
-  for (var i = 1; i < this._heap.length; i++) {
-    this._heap[i].splice(i - 1, 1, i);
+  // swap the root and last element
+  this.swap(0, this._heap.length - 1)
+  // remove the last node, return it later
+  var originalRoot = this._heap.pop()
+
+  // start re-ordering at the root
+  var index = 0;
+
+  // get the index of the smaller child value
+  var childIndex = this.getLesserChildIndex(index)
+
+  // while there is a smaller child to swap with
+  while (childIndex && this.compare(this._heap[childIndex], this._heap[index])) {
+    // swap with the lesser child
+    this.swap(childIndex, index)
+    // update indices used to track nodes
+    index = childIndex
+    childIndex = this.getLesserChildIndex(index)
   }
-  return this._heap.splice(0, 1)
+
+  // return the last node, stored earlier
+  return originalRoot
+
+}
+
+BinaryHeap.prototype.getLesserChildIndex = function(parentIndex) {
+  var childIndices = [parentIndex * 2 + 1, parentIndex * 2 + 2]
+
+  if (this.compare(this._heap[childIndices[0]], this._heap[childIndices[1]])) {
+    return childIndices[0]
+  } else {
+    return childIndices[1]
+  }
 }
