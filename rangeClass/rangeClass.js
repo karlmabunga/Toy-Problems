@@ -47,7 +47,7 @@ var Range = function(start, end, step = 1) {
   if (end === undefined) {
     return start;
   }
-  ;if (start < end) {
+  if (start < end) {
     while (start <= end) {
       this.result[start] = start;
       start += step;
