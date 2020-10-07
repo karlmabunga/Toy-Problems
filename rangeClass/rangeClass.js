@@ -49,11 +49,13 @@ var Range = function(start, end, step = 1) {
   }
   if (start < end) {
     while (start <= end) {
+      console.log('first loop')
       this.result[start] = start;
       start += step;
     }
   } else {
-    while (start > end) {
+    while (start >= end) {
+      console.log('second loop')
       this.result[start] = start;
       start += step;
     }
