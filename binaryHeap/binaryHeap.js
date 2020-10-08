@@ -84,7 +84,7 @@ BinaryHeap.prototype.insert = function (value) {
   this._heap.push(value);
   var index = this._heap.length - 1;
   var parentIndex = Math.floor((index - 1) / 2);
-  while (index > 0 && this.compare(this._heap[index], this._heap[parentIndex])) {
+  while (index > 0 && this._compare(this._heap[index], this._heap[parentIndex])) {
     this.swap(index, parentIndex)
     index = parentIndex;
     parentIndex = Math.floor((index - 1) / 2)
@@ -112,7 +112,7 @@ BinaryHeap.prototype.removeRoot = function () {
   var childIndex = this.getLesserChildIndex(index)
 
   // while there is a smaller child to swap with
-  while (childIndex && this.compare(this._heap[childIndex], this._heap[index])) {
+  while (childIndex && this._compare(this._heap[childIndex], this._heap[index])) {
     // swap with the lesser child
     this.swap(childIndex, index)
     // update indices used to track nodes
@@ -128,7 +128,7 @@ BinaryHeap.prototype.removeRoot = function () {
 BinaryHeap.prototype.getLesserChildIndex = function(parentIndex) {
   var childIndices = [parentIndex * 2 + 1, parentIndex * 2 + 2]
 
-  if (this.compare(this._heap[childIndices[0]], this._heap[childIndices[1]])) {
+  if (this._compare(this._heap[childIndices[0]], this._heap[childIndices[1]])) {
     return childIndices[0]
   } else {
     return childIndices[1]

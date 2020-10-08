@@ -31,6 +31,8 @@
  */
 
 var LRUCache = function (limit) {
+  this.list = new list;
+  this.limit = limit;
 };
 
 var LRUCacheItem = function (val, key) {
@@ -40,6 +42,7 @@ LRUCache.prototype.size = function () {
 };
 
 LRUCache.prototype.get = function (key) {
+
 };
 
 LRUCache.prototype.set = function (key, val) {

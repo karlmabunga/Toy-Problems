@@ -40,47 +40,55 @@
 
 
 var Range = function(start, end, step = 1) {
+  this.start = start
+
   this.result = {}
   if (start === undefined) {
     return null;
   }
   if (end === undefined) {
-    return start;
-  }
-  if (start < end) {
-    while (start <= end) {
-      console.log('first loop')
-      this.result[start] = start;
-      start += step;
-    }
+    this.end = start;
   } else {
-    while (start >= end) {
-      console.log('second loop')
-      this.result[start] = start;
-      start -= step;
-    }
+    this.end = end
   }
+//   if (start < end) {
+//     while (start <= end) {
+//       console.log('first loop')
+//       this.result[start] = start;
+//       start += step;
+//     }
+//   } else {
+//     while (start >= end) {
+//       console.log('second loop')
+//       this.result[start] = start;
+//       start -= step;
+//     }
+//   }
 };
 
 Range.prototype.size = function () {
-  var result = this.result;
-  var keys = Object.values(result)
-  return keys.length;
+  return Math.floor((this.end - this.start) / this.step) + 1;
 };
 
 Range.prototype.each = function (callback) {
-  for (var key in this.result) {
-    callback(this.result[key])
+  if (this.step > 0)
+    for (var i = this.start; i <= this.end; i += this.step) {
+      callback(i)
+  } else {
+    for (var i = this.start; i >= this.end; i += this.step) {
+      callback(i)
+    }
   }
+
 };
 
 Range.prototype.includes = function (val) {
-  if (this.result[val]) {
-    return true;
+  if (this.step > 0) {
+    return (val >= this.start && val <= this.end && ((val - this.start) / this.step) % 1 === 0)
+  } else {
+    return (val <= this.start && val >= this.end && ((val - this.start) / this.step) % 1 === 0)
   }
-  return false;
 };
-
 // var range = new Range(1);
 // console.log(range)
 
