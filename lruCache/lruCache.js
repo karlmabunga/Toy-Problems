@@ -31,21 +31,60 @@
  */
 
 var LRUCache = function (limit) {
-  this.list = new list;
-  this.limit = limit;
+  this._cache = new List();
+  this._map = {};
+  this._size = 0;
+  this._limit = limit;
 };
 
 var LRUCacheItem = function (val, key) {
+  this.key = key;
+  this.value = value;
+  this.node = null;
 };
 
 LRUCache.prototype.size = function () {
+  return this._size;
 };
 
 LRUCache.prototype.get = function (key) {
+  // if item doesn't exist
+  if (!this._map[key]) {
+    return null
+    // otherwise
+  } else {
+    var item = this._map[key]
+    this._cache.moveToFront(item.node)
+    return item.value;
+  }
+  // return val
 
 };
 
 LRUCache.prototype.set = function (key, val) {
+  var item;
+  // if key already exists
+  if (key in this._map) {
+    // replace value and move node to front
+    item = this._map[key];
+    item.value = val;
+    //  else
+  } else {
+    // create node and add to front
+    item = new LRUCacheItem(key, value)
+    item.node = this._cache.unshift(item);
+    this._map[key] = item;
+    this._size++;
+    // if size > limit
+    if (this._size > this._limit) {
+      // remove node
+      var oldest = this._cache.pop()
+      // decrement size
+      this._size--;
+    }
+
+  }
+
 };
 
 
