@@ -42,21 +42,17 @@ function Node (val) {
 // edge cases - none
 function linkedListIntersection(list1, list2) {
   // TODO: Implement this function!
-  // create var for list1 vals
-  var listOne = []
-  // create var for list2 vals
-  var listTwo = []
-  for (var key in list1) {
-    listOne.push(list1[key])
-  }
-  for (var key in list2) {
-    listTwo.push(list2[key])
-  }
-  for (var items of listOne) {
-    for (var things of listTwo)
-    if (items === things) {
-      return items;
+  let beginningOfList2 = list2
+  while(list1 !== null) {
+    while(list2 !== null) {
+      if(list1.value === list2.value) {
+        return list1.value
+      } else {
+        list2 = list2.next;
+      }
     }
+    list2 = beginningOfList2;
+    list1 = list1.next;
   }
   return null;
 }
