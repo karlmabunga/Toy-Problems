@@ -13,49 +13,21 @@
  */
 
 var toFraction = function(number) {
-  // Your code here
-  var stringNum = number.toString().split('');
-  var hundreths = parseInt(stringNum[2]);
-  var ending = number.toString().slice(2);
-  var float = parseInt(ending);
-  console.log(stringNum.length)
-  if (stringNum.length === 4) {
-    var numerator = number *  100;
-    var denominator = 1 * 100;
-  } else if (stringNum.length === 3) {
-    var numerator = number *  10;
-    var denominator = 1 * 10;
+  var denominator = 1;
+  if ( number < 0) {
+    return '-' toFraction(-num)
+  } else {
+    while(number % 1 !== 0) {
+      number *= 10;
+      denominator *= 10;
+    }
   }
-
-  if (numerator % float === 0 && denominator % float === 0) {
-    numerator = numerator / float;
-    denominator = denominator / float;
-  }
-  if (numerator % 10 === 0 && denominator % 10 === 0) {
-    numerator = numerator / 10;
-    denominator = denominator / 10;
-  }
-  if (numerator % 9 === 0 && denominator % 9 === 0) {
-    numerator = numerator / 9;
-    denominator = denominator / 9;
-  }
-  if (numerator % 7 === 0 && denominator % 7 === 0) {
-    numerator = numerator / 7;
-    denominator = denominator / 7;
-  }
-  if (numerator % 5 === 0 && denominator % 5 === 0) {
-    numerator = numerator / 5;
-    denominator = denominator / 5;
-  }
-  if (numerator % 3 === 0 && denominator % 3 === 0) {
-    numerator = numerator / 3;
-    denominator = denominator / 3;
-  }
-  if (numerator % 2 === 0 && denominator % 2 === 0) {
-    numerator = numerator / 2;
-    denominator = denominator / 2;
-  }
-
-  return `${numerator}/${denominator}`
-
+    var commonDenom = 1;
+    for (var i = number; i > 0; i--) {
+      if (number % i === 0 && denominator % i === 0) {
+        commonDenom = i;
+        break;
+      }
+    }
+    return (number / commonDenom) + '/' + (denominator / commonDenom)
 };
