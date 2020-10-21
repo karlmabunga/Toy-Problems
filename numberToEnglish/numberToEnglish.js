@@ -54,5 +54,40 @@ var numbersToPlace = {
 };
 
 Number.prototype.toEnglish = function () {
+  let innerRecurse = (num) => {
+    let place;
+    let placeValue;
+    let toBeRecursed;
+    let results = "";
+    // check for a match in the toWords object
+    if (numbersToWords[num]) {
+      results = numbersToWords[num];
+    } else if (num < 100) {
+      placeValueNum = Math.floor(num / 10) * 10;
+      toBeRecursed = num % 10;
+      results = numbersToWords[placeValueNum] + '-' + numbersToWords[toBeRecursed];
+    } else {
+      // if num is less than 100
+      if (num < 1000) {
+        place = 100;
+      } else {
+        // set place to 1000
+        place = 1000;
+        while (place * 1000 <= num) {
+          place *= 1000;
+        }
+      }
+      // set currentNumber to Math.floor on num divided by place
+      placeValue = Math.floor(num / place);
+      // set remaining numbers to modulo place
+      toBeRecursed = num % place;
+      results = innerRecurse(placeValueNum) + ' ' + numbersToPlace[place];
+      var restOfNumber;
+      if (restOfNumber !== 'zero') {
+        results += ' ' + restOfNumber
+      }
+    }
+  }
   // return my value as english words
+  return results;
 };
