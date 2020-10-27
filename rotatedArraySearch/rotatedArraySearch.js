@@ -16,6 +16,19 @@
  */
 
 var rotatedArraySearch = function (rotated, target) {
-  // Your code here:
+  // find mid point
+  var mid = Math.floor(rotated.length / 2);
+  // create left and right arrarys
+  var left = rotated.slice(0, mid);
+  var right = rotated.slice(mid);
+  // compare the mid point to the target
+  if (rotated[mid] === target) {
+    return mid
+  }
+  if (target > rotated[0]) {
+    // return in target
+    rotatedArraySearch(left, target)
+  } else {
+    rotatedArraySearch(right, target)
+  }
 };
-
