@@ -38,9 +38,9 @@ Tree.prototype.addChild = function(child) {
   *  3.) between my grandma and my grandma -> my grandma
   *  4.) between me and a potato -> null
   */
-Tree.prototype.getClosestCommonAncestor = function(/*...*/
-) {
+Tree.prototype.getClosestCommonAncestor = function(node) {
   // TODO: implement me!
+
 };
 
 /**
@@ -51,9 +51,15 @@ Tree.prototype.getClosestCommonAncestor = function(/*...*/
   * 3.) me.getAncestorPath(me) -> [me]
   * 4.) grandma.getAncestorPath(H R Giger) -> null
   */
-Tree.prototype.getAncestorPath = function(/*...*/
-) {
+Tree.prototype.getAncestorPath = function(target, results = []) {
   // TODO: implement me!
+  // var results = [];
+  results.push(this);
+  if (this === target) {
+    return results
+  } else if (this.children !== undefined) {
+    this.children.getAncestorPath(target, results)
+  }
 };
 
 /**
