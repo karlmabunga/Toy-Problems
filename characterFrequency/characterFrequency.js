@@ -53,5 +53,13 @@ var characterFrequency = function(string) {
   result.sort(function(a,b) {
     return b[1] - a[1]
   })
+  result.sort(function(a,b) {
+    if (a[0] < b[0]) {
+      return -1;
+    }
+    if (a[0] > b[0]) {
+      return 1;
+    }
+  })
   return result;
 };
