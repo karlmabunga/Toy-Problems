@@ -38,7 +38,7 @@
       if (this.size > 0) {
          var result = this.storage[this.position];
          delete this.storage[this.position];
-         if (this.storage[this.postion] < minVal) {
+         if (this.storage[this.position] < minVal) {
              minVal = 2 * minVal - this.storage[this.position];
          }
          this.position--;

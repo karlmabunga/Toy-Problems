@@ -14,37 +14,35 @@
 // output - array that is sorted
 // edge case - if array is empty then return empty array
 // constraints - none?
-var quicksort = function(array) {
-  //     if array lenth <= 1
-  if (array.length <=1) {
-      // return array
-      return array;
+var pivot = function (array, start = 0, end = array.length){
+  const swap = (arr, idx1, idx2) => {
+    [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]];
   }
 
-  // create var for pivot
-  var pivot = array.shift();
-  // make array for less than
-  var lessThan = [];
-  // make array for bigger than
-  var biggerThan = [];
+  var pivot = array[start];
+  var swapIdx = start;
 
-  // loop through array
-  for (var i = 0; i < array.length; i++) {
-  // if currentnum is less than pivot
-    if (array[i] < pivot) {
-    // push to lessthan
-    lessThan.push(array[i]);
-    } else {
-    // otherwise
-    // push to bigger than
-    biggerThan.push(array[i]);
+  for(var i = start + 1; i < array.length; i++){
+    if (pivot > array[i]){
+      swapIdx++;
+      swap(array, swapIdx, i);
     }
   }
+  swap(array, swapIdx, start);
+  return swapIdx;
+}
 
-  //return array with rest less than, pivot, rest bigger than
-  return [...quicksort(lessThan), pivot, ...quicksort(biggerThan)]
+
+function quicksort (arr, left = 0, right = arr.length - 1) {
+  if (left < right) {
+    let pivotIndex = pivot(arr, left, right)
+    quicksort(arr, left, pivotIndex - 1);
+    quicksort(arr, pivotIndex + 1, right);
   }
+  return arr;
+
+}
 
 
-var test = [1, 3, 2, 6, 4];
-quicksort(test) // [1, 2, 3, 4, 6]
+// var test = [1, 3, 2, 6, 4];
+// quicksort(test) // [1, 2, 3, 4, 6]

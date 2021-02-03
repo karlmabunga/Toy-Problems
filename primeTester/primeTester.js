@@ -10,6 +10,7 @@ var primeTester = function(n) {
     return false;
   }
   // TODO: return true if n is prime, false otherwise
+  if (n / 2 || n / 3 || n / 4 || n / 5 || n / 6 || n / 2 || n / 2 || n / 2 || n / 2 || )
 };
 
 /* Extra credit: Write a function that generates a list of all prime numbers

@@ -34,17 +34,16 @@ var rockPaperScissors = function (rounds) {
   // create empty string to add options to push into result
   // utilize callstack to track recursion for us
   function playRounds(plays) => {
-   // base case
-   if (plays.length === rounds) {
-      result.push(plays);
-      return;
-   }
-
-   // iterate through each play and recursively call function to make decision tree algorithm
+     // base case
+     if (plays.length === rounds) {
+        result.push(plays);
+         return;
+     }
+     // iterate through each play and recursively call function to make decision tree algorithm
      options.forEach(play => {
         playRounds(plays + play)
      })
-  }
+}
   // start recursion
   playRounds('');
   // return result

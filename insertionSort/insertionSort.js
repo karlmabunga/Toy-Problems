@@ -51,19 +51,15 @@ var testingTransform = function(array) {
 // constraints - nothing
 var insertionSort = function(array) {
   //create for loop
-  //start at 1st index because we will assume the 1st item is sorted
   for (var i = 1; i < array.length; i++) {
-   //create inner loop
-   //start at 0 to check behind i and up until i
-   for (var j = 0; j < i; j++) {
-     // if value in the latter of the array < value of former of the array
-     if (array[i].value < array[j].value) {
-     // create var to splice out array[i]
-     var tempHold = array.splice(i, 1)
-     // put in the var in front of the array[j]
-     array.splice(j, 0, tempHold[0])
-     }
-   }
+  //start at 1st index
+    var val = array[i];
+    var swap = i;
+    while (val < array[swap - 1]) {
+      array[swap] = array[swap - 1];
+      swap--;
+    }
+    array[swap] = val;
   }
   return array;
 };
