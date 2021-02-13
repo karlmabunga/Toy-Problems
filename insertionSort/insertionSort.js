@@ -49,21 +49,33 @@ var testingTransform = function(array) {
 // output -sorted array
 // edge cases - if empty array
 // constraints - nothing
-var insertionSort = function(array) {
-  //create for loop
-  for (var i = 1; i < array.length; i++) {
-  //start at 1st index
-    var val = array[i];
-    var swap = i;
-    while (val < array[swap - 1]) {
-      array[swap] = array[swap - 1];
-      swap--;
+var insertionSort = function(arr) {
+
+
+  for (var i = 1; i < arr.length; i++) {
+    var curr = arr[i];
+    for (var j = i - 1; j >= 0 && arr[j] > curr; j--) {
+      arr[j+1] = arr[j];
     }
-    array[swap] = val;
+    arr[j+1]  = curr;
   }
-  return array;
+  return arr;
+  // //create for loop
+  // for (var i = 1; i < array.length; i++) {
+  // //start at 1st index
+  //   var val = array[i];
+  //   var swap = i;
+  //   while (val < array[swap - 1]) {
+  //     array[swap] = array[swap - 1];
+  //     swap--;
+  //   }
+  //   array[swap] = val;
+  // }
+  // return array;
 };
 // insertionSort([{value: 2}, {value: 1}, {value: 3}]);
 // yields [{value: 1}, {value: 2}, {value: 3}]
-// var test = testingTransform([2, 43, 1, 3, 8, 12,2])
-// console.log(test);
+var test = testingTransform([2, 43, 1, 3, 8, 12,2])
+console.log(test);
+debugger
+console.log('sort: ', insertionSort([12,3,4,2,1]));

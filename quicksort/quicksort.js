@@ -44,5 +44,5 @@ function quicksort (arr, left = 0, right = arr.length - 1) {
 }
 
 
-// var test = [1, 3, 2, 6, 4];
-// quicksort(test) // [1, 2, 3, 4, 6]
+var test = [1, 3, 2, 6, 4];
+console.log(quicksort(test)) // [1, 2, 3, 4, 6]
