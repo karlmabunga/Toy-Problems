@@ -25,7 +25,7 @@ function pyramid(n) {
     for (let column = 0; column < maxPieces; column++) {
 
       if (column - row <= midpoint && column + row >= midpoint) {
-        piece = piece + '#';
+        piece += '#';
       } else {
         piece += ' ';
       }
@@ -35,4 +35,4 @@ function pyramid(n) {
   return result;
 }
 
-console.log(pyramid(3));
+// console.log(pyramid(3));
