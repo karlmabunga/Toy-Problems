@@ -19,5 +19,20 @@
 
 function steps(n) {
   let result = [];
+
+  for (let row = 0; row < n; row++) {
+    let step = '';
+    for (let column = 0; column < n; column++) {
+      if (row >= column) {
+        step += '#';
+      } else {
+        step += ' ';
+      }
+    }
+    result.push([step])
+  }
+
+  return result;
 }
 
+// console.log(steps(3));
