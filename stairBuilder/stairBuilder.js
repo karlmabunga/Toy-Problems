@@ -5,17 +5,19 @@
 // step has spaces on the right hand side!
 // --- Examples
 //   steps(2)
-//       '# '
-//       '##'
+//       [['# ']
+//        ['##']]
 //   steps(3)
-//       '#  '
-//       '## '
-//       '###'
+//       [['#  ']
+//        ['## ']
+//        ['###']]
 //   steps(4)
-//       '#   '
-//       '##  '
-//       '### '
-//       '####'
+//       [['#   ']
+//        ['##  ']
+//        ['### ']
+//        ['####']]
 
-function steps(n) {}
+function steps(n) {
+  let result = [];
+}
 
