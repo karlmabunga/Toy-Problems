@@ -16,5 +16,53 @@
 
 var spiralTraversal = function(matrix) {
 
-  // TODO: Implement me!
+  let results = [];
+  let startRow = 0;
+  let endRow = matrix[0].length - 1;
+  let startColumn = 0;
+  let endColumn = matrix.length - 1;
+
+  while (startRow <= endRow && startColumn <= endColumn) {
+    // top row
+    for (let i = startColumn; i <= endColumn; i++) {
+      results.push(matrix[startRow][i]);
+    }
+    startRow++;
+
+    // right side
+    for (let i = startRow; i <= endRow; i++) {
+      results.push(matrix[i][endColumn]);
+    }
+    endColumn--;
+
+    if (startRow <= endRow) {
+      // bottom side
+      for (let i = endColumn; i >= startColumn; i--) {
+        results.push(matrix[endRow][i])
+      }
+      endRow--;
+    }
+
+    if (startColumn <= endColumn) {
+
+      // starting column
+      for (let i = endRow; i >= startRow; i--) {
+        results.push(matrix[i][startColumn])
+      }
+      startColumn++;
+    }
+
+  }
+
+  return results
 };
+
+
+console.log(
+  spiralTraversal([
+    [1,2,3],
+    [4,5,6],
+    [7,8,9]
+  ])
+)
+// returns [1, 2, 3, 6, 9, 8, 7, 4, 5]
