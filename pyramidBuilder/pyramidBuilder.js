@@ -15,6 +15,24 @@
 //       ['#####']]
 
 function pyramid(n) {
+  const result = [];
+  const maxPieces = 2 * n  - 1;
+  const midpoint = Math.floor(maxPieces / 2);
 
+  for (let row = 0; row < n; row++) {
+    let piece = '';
+
+    for (let column = 0; column < maxPieces; column++) {
+
+      if (column - row <= midpoint && column + row >= midpoint) {
+        piece = piece + '#';
+      } else {
+        piece += ' ';
+      }
+    }
+    result.push([piece]);
+  }
+  return result;
 }
 
+console.log(pyramid(3));
